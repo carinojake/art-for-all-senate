@@ -683,15 +683,21 @@
           
           <!-- AI Video Script Timeline (7 cols) -->
           <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl">
-            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-800">
               <div>
                 <h3 class="text-xl font-bold text-white flex items-center gap-2">
                   <i data-lucide="film" class="w-5 h-5 text-purple-400"></i>
                   <span>สคริปต์วิดีโอ AI & วิดีโอตัวอย่าง (ความยาว 60 วินาที)</span>
                 </h3>
-                <p class="text-xs text-slate-400 mt-1">รับชมวิดีโอพร้อมโครงสร้างบทบรรยายและภาพจำลองที่สร้างด้วย Video AI</p>
+                <p class="text-xs text-slate-400 mt-1">รับชมวิดีโอพร้อมคัดลอก Prompt สำหรับ Kling AI, Runway Gen-3, Luma และ Hailuo</p>
               </div>
-              <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-semibold">60 Secs</span>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="copyAllScenePrompts(this)" class="px-3 py-1.5 rounded-full bg-purple-600/20 hover:bg-purple-600 border border-purple-500/40 text-purple-200 hover:text-white text-xs font-medium transition flex items-center gap-1.5">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>คัดลอกครบ 4 ฉาก</span>
+                </button>
+                <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-semibold">60 Secs</span>
+              </div>
             </div>
 
             <!-- Integrated Embedded Player for Scene Breakdown -->
@@ -705,16 +711,16 @@
               </iframe>
             </div>
 
-            <!-- Timeline scenes with interactive jump links -->
+            <!-- Timeline scenes with interactive jump links & AI Video Prompts -->
             <div class="space-y-6">
               
               <!-- Scene 1 -->
-              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-purple-500/40 transition">
+              <div class="flex gap-4 items-start p-4 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-purple-500/40 transition">
                 <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=0s" target="_blank" class="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-purple-600 hover:text-white transition" title="คลิกดูช่วงเวลานี้บน YouTube">
                   <span>ฉาก 1</span>
                   <span class="text-[9px] text-purple-300">0–15s</span>
                 </a>
-                <div class="flex-1">
+                <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between mb-1">
                     <h4 class="text-sm font-semibold text-white">ฉากที่ 1: ประกายแห่งจินตนาการ (Spark of Imagination)</h4>
                     <span class="text-[10px] text-purple-300 font-mono">00:00 - 00:15</span>
@@ -722,19 +728,33 @@
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-purple-300">ภาพ:</strong> ผืนผ้าใบสีขาว จานสี และมือของเยาวชนที่จับพู่กันร่วมกัน แสงนุ่มนวลสะท้อนดวงตาแห่งความมุ่งมั่น
                   </p>
-                  <p class="text-xs text-slate-400 italic">
+                  <p class="text-xs text-slate-400 italic mb-3">
                     <strong class="text-slate-200">เสียงบรรยาย:</strong> "ความพิการอาจสร้างข้อจำกัดทางกายภาพ... แต่ไม่เคยหยุดยั้งหัวใจแห่งการสร้างสรรค์"
                   </p>
+                  <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <div class="flex items-center gap-1 text-[10px]">
+                        <button type="button" onclick="switchSceneModel(1, 'kling', this)" class="scene-tab-1 px-2 py-0.5 rounded bg-purple-600 text-white font-medium">Kling AI</button>
+                        <button type="button" onclick="switchSceneModel(1, 'runway', this)" class="scene-tab-1 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Runway Gen-3</button>
+                        <button type="button" onclick="switchSceneModel(1, 'luma', this)" class="scene-tab-1 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Luma / Hailuo</button>
+                      </div>
+                      <button type="button" onclick="copyScenePrompt(1, this)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-purple-600 text-slate-200 hover:text-white text-[11px] font-medium transition flex items-center gap-1">
+                        <i data-lucide="copy" class="w-3 h-3"></i>
+                        <span>คัดลอก Prompt</span>
+                      </button>
+                    </div>
+                    <p id="scenePromptText1" class="text-[11px] font-mono text-slate-300 leading-relaxed select-all">Cinematic macro close-up, warm golden sunlight illuminating a Thai youth's determined eyes and steady hands holding a wooden paintbrush, applying rich royal purple and warm amber acrylic paint onto a textured white canvas. Soft dust motes floating in sunbeams, shallow depth of field, slow smooth dolly-in, photorealistic film grain, 4K.</p>
+                  </div>
                 </div>
               </div>
 
               <!-- Scene 2 -->
-              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-pink-500/40 transition">
+              <div class="flex gap-4 items-start p-4 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-pink-500/40 transition">
                 <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=15s" target="_blank" class="w-12 h-12 rounded-xl bg-pink-600/20 border border-pink-500/30 text-pink-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-pink-600 hover:text-white transition" title="คลิกดูช่วงเวลานี้บน YouTube">
                   <span>ฉาก 2</span>
                   <span class="text-[9px] text-pink-300">15–35s</span>
                 </a>
-                <div class="flex-1">
+                <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between mb-1">
                     <h4 class="text-sm font-semibold text-white">ฉากที่ 2: พลังแห่ง 5 รวมเป็น 1 (5 in 1 Genius in Action)</h4>
                     <span class="text-[10px] text-pink-300 font-mono">00:15 - 00:35</span>
@@ -742,19 +762,33 @@
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-pink-300">ภาพ:</strong> การแบ่งบทบาทตามโมเดล คนตาบอดส่งเสียง คนหูหนวกบรรจงแต้มสี เพื่อนช่วยพยุง และร่วมกันเนรมิตภาพวาดขนาดใหญ่
                   </p>
-                  <p class="text-xs text-slate-400 italic">
+                  <p class="text-xs text-slate-400 italic mb-3">
                     <strong class="text-slate-200">เสียงบรรยาย:</strong> "เมื่อดวงตา ปาก หู แรงกาย และปัญญา หลอมรวมเป็นหนึ่ง... เราทุกคนคือ 'อัจฉริยะ' ที่สร้างสิ่งมหัศจรรย์ได้ร่วมกัน"
                   </p>
+                  <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <div class="flex items-center gap-1 text-[10px]">
+                        <button type="button" onclick="switchSceneModel(2, 'kling', this)" class="scene-tab-2 px-2 py-0.5 rounded bg-pink-600 text-white font-medium">Kling AI</button>
+                        <button type="button" onclick="switchSceneModel(2, 'runway', this)" class="scene-tab-2 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Runway Gen-3</button>
+                        <button type="button" onclick="switchSceneModel(2, 'luma', this)" class="scene-tab-2 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Luma / Hailuo</button>
+                      </div>
+                      <button type="button" onclick="copyScenePrompt(2, this)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-pink-600 text-slate-200 hover:text-white text-[11px] font-medium transition flex items-center gap-1">
+                        <i data-lucide="copy" class="w-3 h-3"></i>
+                        <span>คัดลอก Prompt</span>
+                      </button>
+                    </div>
+                    <p id="scenePromptText2" class="text-[11px] font-mono text-slate-300 leading-relaxed select-all">Medium wide shot in a bright Thai art studio, five young Thai artists working side by side on a large vibrant canvas mural. One youth in a wheelchair pointing and guiding, another youth carefully painting fine details, teammates smiling and sharing paintbrushes in joyful unity. Warm natural daylight, steady slow horizontal gimbal pan, authentic Thai faces, photorealistic 4K.</p>
+                  </div>
                 </div>
               </div>
 
               <!-- Scene 3 -->
-              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-amber-500/40 transition">
+              <div class="flex gap-4 items-start p-4 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-amber-500/40 transition">
                 <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=35s" target="_blank" class="w-12 h-12 rounded-xl bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-amber-600 hover:text-slate-950 transition" title="คลิกดูช่วงเวลานี้บน YouTube">
                   <span>ฉาก 3</span>
                   <span class="text-[9px] text-amber-300">35–50s</span>
                 </a>
-                <div class="flex-1">
+                <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between mb-1">
                     <h4 class="text-sm font-semibold text-white">ฉากที่ 3: จากศิลปะสู่อาชีพจริง (From Canvas to Sustainable Career)</h4>
                     <span class="text-[10px] text-amber-300 font-mono">00:35 - 00:50</span>
@@ -762,19 +796,33 @@
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-amber-300">ภาพ:</strong> ผลงานศิลปะถูกแปลงเป็นสินค้า กระเป๋า เสื้อผ้า ของตกแต่งบ้าน และการจัดแสดงในหอศิลป์ระดับชาติ
                   </p>
-                  <p class="text-xs text-slate-400 italic">
+                  <p class="text-xs text-slate-400 italic mb-3">
                     <strong class="text-slate-200">เสียงบรรยาย:</strong> "ไม่ใช่แค่ความเพลิดเพลิน แต่คืออาชีพ คือรายได้ และคือศักดิ์ศรีความเป็นมนุษย์ที่พึ่งพาตนเองได้"
                   </p>
+                  <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <div class="flex items-center gap-1 text-[10px]">
+                        <button type="button" onclick="switchSceneModel(3, 'kling', this)" class="scene-tab-3 px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-medium">Kling AI</button>
+                        <button type="button" onclick="switchSceneModel(3, 'runway', this)" class="scene-tab-3 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Runway Gen-3</button>
+                        <button type="button" onclick="switchSceneModel(3, 'luma', this)" class="scene-tab-3 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Luma / Hailuo</button>
+                      </div>
+                      <button type="button" onclick="copyScenePrompt(3, this)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-amber-500 text-slate-200 hover:text-slate-950 text-[11px] font-medium transition flex items-center gap-1">
+                        <i data-lucide="copy" class="w-3 h-3"></i>
+                        <span>คัดลอก Prompt</span>
+                      </button>
+                    </div>
+                    <p id="scenePromptText3" class="text-[11px] font-mono text-slate-300 leading-relaxed select-all">Elegant cinematic dolly shot inside a modern luxury art gallery in Bangkok, showcasing colorful artisan canvas tote bags, silk scarves, and framed paintings created by young Thai artists. Warm gallery spotlights, visitors admiring the exhibits while proud young artists smile beside their work, photorealistic, crisp textures, 4K.</p>
+                  </div>
                 </div>
               </div>
 
               <!-- Scene 4 -->
-              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-emerald-500/40 transition">
+              <div class="flex gap-4 items-start p-4 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-emerald-500/40 transition">
                 <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=50s" target="_blank" class="w-12 h-12 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-emerald-600 hover:text-white transition" title="คลิกดูช่วงเวลานี้บน YouTube">
                   <span>ฉาก 4</span>
                   <span class="text-[9px] text-emerald-300">50–60s</span>
                 </a>
-                <div class="flex-1">
+                <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between mb-1">
                     <h4 class="text-sm font-semibold text-white">ฉากที่ 4: พลังนิติบัญญัติเพื่อความยั่งยืน (Senate's Legacy)</h4>
                     <span class="text-[10px] text-emerald-300 font-mono">00:50 - 01:00</span>
@@ -782,9 +830,23 @@
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-emerald-300">ภาพ:</strong> อาคารรัฐสภาเชื่อมโยงภาพรอยยิ้มของเด็กๆ และโลโก้ Art for All ปิดท้ายด้วยกำหนดการจัดงาน
                   </p>
-                  <p class="text-xs text-slate-400 italic">
+                  <p class="text-xs text-slate-400 italic mb-3">
                     <strong class="text-slate-200">เสียงบรรยาย:</strong> "วุฒิสภาขับเคลื่อนนโยบาย ส่งเสริมสิทธิ สร้างโอกาส สร้างอาชีพให้คนพิการผ่านศิลปะ... พบกัน 26-28 พฤศจิกายน 2569"
                   </p>
+                  <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <div class="flex items-center gap-1 text-[10px]">
+                        <button type="button" onclick="switchSceneModel(4, 'kling', this)" class="scene-tab-4 px-2 py-0.5 rounded bg-emerald-600 text-white font-medium">Kling AI</button>
+                        <button type="button" onclick="switchSceneModel(4, 'runway', this)" class="scene-tab-4 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Runway Gen-3</button>
+                        <button type="button" onclick="switchSceneModel(4, 'luma', this)" class="scene-tab-4 px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white">Luma / Hailuo</button>
+                      </div>
+                      <button type="button" onclick="copyScenePrompt(4, this)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-emerald-600 text-slate-200 hover:text-white text-[11px] font-medium transition flex items-center gap-1">
+                        <i data-lucide="copy" class="w-3 h-3"></i>
+                        <span>คัดลอก Prompt</span>
+                      </button>
+                    </div>
+                    <p id="scenePromptText4" class="text-[11px] font-mono text-slate-300 leading-relaxed select-all">Majestic cinematic aerial drone shot at sunset of Sappaya-Sapasathan, the grand golden-spired Thai Parliament building beside the Chao Phraya River in Bangkok, bathed in warm golden-hour sunlight with soft lens flare. Smooth slow forward flight, grand architectural detail, photorealistic broadcast quality, 4K.</p>
+                  </div>
                 </div>
               </div>
 
@@ -875,6 +937,37 @@
                    class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 text-slate-200 transition">
                   <span>ตอนที่ 3: พลังนิติบัญญัติเพื่อความยั่งยืน</span>
                   <span class="text-[11px] text-slate-400">MP4</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Google NotebookLM AI Studio Hub -->
+            <div class="glass-card p-6 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-cyan-950/20 to-slate-900/70">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="p-2 rounded-xl bg-cyan-500/20 text-cyan-300"><i data-lucide="book-open" class="w-5 h-5"></i></span>
+                  <div>
+                    <h4 class="font-bold text-white text-base">Google NotebookLM AI Studio</h4>
+                    <p class="text-[11px] text-slate-400">ชุดสไลด์ & ภาพรวมวิดีโอสังเคราะห์จากแหล่งข้อมูล 11 รายการ</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-2.5 mt-4 text-xs">
+                <a href="https://notebook.google.com/notebook/1bb7eab8-e894-4022-bd84-f446f2691fdb/artifact/b3d87dfa-2163-4476-bc51-f3264b7d3493" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between p-3 rounded-xl bg-pink-500/15 hover:bg-pink-500/25 border border-pink-500/40 text-pink-200 font-semibold transition">
+                  <span class="flex items-center gap-2"><i data-lucide="presentation" class="w-4 h-4 text-pink-400"></i> ชุดสไลด์: Modern Senate Blueprint</span>
+                  <span class="text-[11px] text-pink-300 flex items-center gap-1">เปิดดู <i data-lucide="external-link" class="w-3 h-3"></i></span>
+                </a>
+                <a href="https://notebook.google.com/notebook/1bb7eab8-e894-4022-bd84-f446f2691fdb/artifact/789cc2bb-8cda-4fdd-a66a-c5e835cfd900" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between p-3 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-200 font-semibold transition">
+                  <span class="flex items-center gap-2"><i data-lucide="video" class="w-4 h-4 text-emerald-400"></i> วิดีโอ: How Five People Equal One... (1:21)</span>
+                  <span class="text-[11px] text-emerald-300 flex items-center gap-1">เปิดชม <i data-lucide="external-link" class="w-3 h-3"></i></span>
+                </a>
+                <a href="https://notebook.google.com/notebook/1bb7eab8-e894-4022-bd84-f446f2691fdb" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 text-cyan-300 transition">
+                  <span>เปิดสมุดโน้ต AI ฉบับเต็ม (แบบทดสอบ • แฟลชการ์ด • Mind Map)</span>
+                  <span class="text-[11px] text-slate-400 flex items-center gap-1">Notebook <i data-lucide="external-link" class="w-3 h-3"></i></span>
                 </a>
               </div>
             </div>
@@ -1109,6 +1202,78 @@
         closeLightbox();
       }
     });
+
+    // AI Video Scene Prompts Data & Copy Controls
+    const SCENE_VIDEO_PROMPTS = {
+      1: {
+        kling: "Cinematic macro close-up, warm golden sunlight illuminating a Thai youth's determined eyes and steady hands holding a wooden paintbrush, applying rich royal purple and warm amber acrylic paint onto a textured white canvas. Soft dust motes floating in sunbeams, shallow depth of field, slow smooth dolly-in, photorealistic film grain, 4K.",
+        runway: "Slow cinematic push-in shot: inside a bright contemporary Thai art workshop, young artists' hands collaborate over a wooden palette of vivid paints and a blank white canvas. Warm rim lighting, authentic emotion, crisp 35mm cinema lens aesthetic, natural motion.",
+        luma: "Photorealistic cinematic scene of Thai youth artists starting a painting together on a white canvas in a sunlit studio, close-up on paintbrush strokes of gold and violet paint, warm hopeful atmosphere, smooth camera zoom in, high detail 4K."
+      },
+      2: {
+        kling: "Medium wide shot in a bright Thai art studio, five young Thai artists working side by side on a large vibrant canvas mural. One youth in a wheelchair pointing and guiding, another youth carefully painting fine details, teammates smiling and sharing paintbrushes in joyful unity. Warm natural daylight, steady slow horizontal gimbal pan, authentic Thai faces, photorealistic 4K.",
+        runway: "Smooth lateral tracking shot across a sunlit creative studio where five diverse Thai young artists collaborate on a large colorful painting together. Expressive teamwork, warm color palette of gold, magenta, and violet, shallow depth of field, documentary film style, 4K.",
+        luma: "Uplifting cinematic scene of a diverse group of five Thai youth artists painting a giant colorful masterpiece together in a bright studio, joyful teamwork and mutual support, warm sunlight, smooth camera movement, photorealistic 4K."
+      },
+      3: {
+        kling: "Elegant cinematic dolly shot inside a modern luxury art gallery in Bangkok, showcasing colorful artisan canvas tote bags, silk scarves, and framed paintings created by young Thai artists. Warm gallery spotlights, visitors admiring the exhibits while proud young artists smile beside their work, photorealistic, crisp textures, 4K.",
+        runway: "Slow smooth camera glide through an upscale Bangkok art exhibition: vibrant paintings transformed into bespoke fashion bags, scarves, and home decor items on minimalist pedestals, warm gallery lighting, proud young Thai creators in background, 35mm luxury commercial look.",
+        luma: "Cinematic showcase inside a bright national art gallery in Thailand, colorful paintings turned into commercial fashion bags, silk scarves, and decor products, proud young Thai artists standing next to their displayed work, warm gallery lighting, smooth dolly shot, 4K."
+      },
+      4: {
+        kling: "Majestic cinematic aerial drone shot at sunset of Sappaya-Sapasathan, the grand golden-spired Thai Parliament building beside the Chao Phraya River in Bangkok, bathed in warm golden-hour sunlight with soft lens flare. Smooth slow forward flight, grand architectural detail, photorealistic broadcast quality, 4K.",
+        runway: "Sweeping golden hour drone shot approaching the iconic Thai Parliament building by the Chao Phraya River in Bangkok, bathed in warm amber sunset glow, transitioning to smiling Thai youth artists holding vibrant artworks in a sunlit garden, inspiring cinematic finale, 4K.",
+        luma: "Epic golden sunset aerial view of the Thai Parliament building (Sappaya-Sapasathan) by the river in Bangkok, glowing warm light, inspiring and hopeful atmosphere, smooth cinematic camera sweep, photorealistic 4K."
+      }
+    };
+
+    const SCENE_ACTIVE_ACCENT = {
+      1: 'bg-purple-600 text-white font-medium',
+      2: 'bg-pink-600 text-white font-medium',
+      3: 'bg-amber-500 text-slate-950 font-medium',
+      4: 'bg-emerald-600 text-white font-medium'
+    };
+
+    function switchSceneModel(sceneNum, modelKey, btnEl) {
+      const textEl = document.getElementById(`scenePromptText${sceneNum}`);
+      if (textEl && SCENE_VIDEO_PROMPTS[sceneNum] && SCENE_VIDEO_PROMPTS[sceneNum][modelKey]) {
+        textEl.textContent = SCENE_VIDEO_PROMPTS[sceneNum][modelKey];
+      }
+      document.querySelectorAll(`.scene-tab-${sceneNum}`).forEach(tab => {
+        tab.className = `scene-tab-${sceneNum} px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white`;
+      });
+      if (btnEl) {
+        btnEl.className = `scene-tab-${sceneNum} px-2 py-0.5 rounded ${SCENE_ACTIVE_ACCENT[sceneNum]}`;
+      }
+    }
+
+    function flashCopiedButton(btnEl, labelText) {
+      if (!btnEl) return;
+      const originalHTML = btnEl.innerHTML;
+      btnEl.innerHTML = `<span class="text-emerald-300 font-semibold">${labelText}</span>`;
+      setTimeout(() => {
+        btnEl.innerHTML = originalHTML;
+        lucide.createIcons();
+      }, 1800);
+    }
+
+    function copyScenePrompt(sceneNum, btnEl) {
+      const textEl = document.getElementById(`scenePromptText${sceneNum}`);
+      if (!textEl) return;
+      navigator.clipboard.writeText(textEl.textContent.trim()).then(() => {
+        flashCopiedButton(btnEl, 'คัดลอกแล้ว ✓');
+      });
+    }
+
+    function copyAllScenePrompts(btnEl) {
+      const lines = [1, 2, 3, 4].map(num => {
+        const el = document.getElementById(`scenePromptText${num}`);
+        return `[Scene ${num}]\n${el ? el.textContent.trim() : ''}`;
+      });
+      navigator.clipboard.writeText(lines.join('\n\n')).then(() => {
+        flashCopiedButton(btnEl, 'คัดลอกครบ 4 ฉากแล้ว ✓');
+      });
+    }
   </script>
 </body>
 </html>
