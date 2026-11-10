@@ -51,8 +51,74 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="assets/css/custom.css">
+
+  <!-- Universal Design & WCAG 2.1 AA Accessibility Engine Styles -->
+  <style>
+    /* Focus ring for Keyboard & Switch Control users */
+    :focus-visible {
+      outline: 3px solid #fde047 !important;
+      outline-offset: 3px !important;
+    }
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 16px;
+      z-index: 100;
+      background: #fde047;
+      color: #000;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 16px;
+    }
+    /* Font scaling for Low Vision */
+    html.a11y-text-lg { font-size: 18px; }
+    html.a11y-text-xl { font-size: 21px; }
+    /* High Contrast Mode (Yellow on Pure Black) */
+    html.a11y-high-contrast body,
+    html.a11y-high-contrast section,
+    html.a11y-high-contrast header,
+    html.a11y-high-contrast footer,
+    html.a11y-high-contrast .glass-card {
+      background: #000000 !important;
+      background-image: none !important;
+      color: #fef08a !important;
+      border-color: #fde047 !important;
+    }
+    html.a11y-high-contrast h1,
+    html.a11y-high-contrast h2,
+    html.a11y-high-contrast h3,
+    html.a11y-high-contrast h4,
+    html.a11y-high-contrast strong {
+      color: #ffffff !important;
+    }
+    html.a11y-high-contrast a,
+    html.a11y-high-contrast button {
+      border: 2px solid #fde047 !important;
+    }
+    /* Reduce Motion */
+    html.a11y-reduce-motion *,
+    html.a11y-reduce-motion *::before,
+    html.a11y-reduce-motion *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+    /* Larger subtitles on HTML5 video player */
+    video::cue {
+      background: rgba(0, 0, 0, 0.88);
+      color: #fef08a;
+      font-size: 1.15em;
+      font-family: 'Kanit', sans-serif;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body class="bg-[#0b0f19] text-slate-100 antialiased selection:bg-purple-500 selection:text-white">
+  <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก (Skip to Main Content)</a>
 
   <!-- ================= NAVBAR ================= -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-[#0b0f19]/80 backdrop-blur-xl border-b border-slate-800/80">
@@ -117,7 +183,7 @@
     </div>
   </header>
 
-  <main class="pt-20">
+  <main id="main-content" class="pt-20" tabindex="-1">
     <!-- ================= HERO SECTION ================= -->
     <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20">
       <!-- Glow ambient background -->
@@ -905,38 +971,71 @@
               </a>
             </div>
 
-            <!-- Ready-to-Present AI TTS Video Pack (MP4) -->
-            <div class="glass-card p-6 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-amber-950/20 to-slate-900/70">
+            <!-- Ready-to-Present Accessible AI Video Cinema (MP4 + Thai CC Subtitles) -->
+            <div class="glass-card p-6 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-amber-950/20 to-slate-900/70" role="region" aria-label="โรงภาพยนตร์วิดีโอเพื่อการเข้าถึงของคนพิการทุกประเภท">
               <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2.5">
                   <span class="p-2 rounded-xl bg-amber-500/20 text-amber-300"><i data-lucide="clapperboard" class="w-5 h-5"></i></span>
                   <div>
-                    <h4 class="font-bold text-white text-base">ชุดวิดีโอพรีเซนต์ MP4 (พร้อมเสียงพากย์ AI)</h4>
-                    <p class="text-[11px] text-slate-400">Full HD 1080p • พร้อมเปิดนำเสนอและส่งต่อทันที</p>
+                    <h4 class="font-bold text-white text-base">ชุดวิดีโอพรีเซนต์เพื่อคนพิการทุกคน (Full HD + ซับไทย CC)</h4>
+                    <p class="text-[11px] text-slate-300">รองรับคำบรรยายสำหรับคนหูหนวก • เสียงบรรยายภาพสำหรับคนตาบอด • ควบคุมด้วยคีย์บอร์ดได้ 100%</p>
                   </div>
                 </div>
               </div>
 
-              <div class="space-y-2.5 mt-4 text-xs">
-                <a href="./videos/art_for_all_senate_full_presentation.mp4" target="_blank"
-                   class="flex items-center justify-between p-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-200 font-semibold transition">
-                  <span class="flex items-center gap-2"><i data-lucide="play-circle" class="w-4 h-4 text-amber-400"></i> คลิปฉบับเต็มรวม 3 ตอน (Full Presentation)</span>
-                  <span class="text-[11px] text-amber-300">เปิด / ดาวน์โหลด</span>
+              <!-- Interactive HTML5 Video Player with WebVTT Thai Closed Captions -->
+              <div class="mt-4 rounded-2xl overflow-hidden border border-amber-500/40 bg-black shadow-2xl">
+                <video id="a11yCinemaPlayer" class="w-full aspect-video" controls playsinline preload="metadata"
+                       poster="./assets/ai_scenes/clip1_s1.jpg"
+                       aria-label="วิดีโอประชาสัมพันธ์โครงการ Art for All และบทบาทวุฒิสภา พร้อมคำบรรยายภาษาไทย">
+                  <source id="a11yVideoSource" src="./videos/art_for_all_senate_full_presentation.mp4" type="video/mp4">
+                  <track id="a11yVideoTrack" kind="captions" src="./videos/art_for_all_senate_full_presentation.vtt" srclang="th" label="คำบรรยายภาษาไทย (CC)" default>
+                  เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ HTML5 กรุณาดาวน์โหลดไฟล์ด้านล่าง
+                </video>
+              </div>
+
+              <!-- Episode Switcher Buttons (48px Accessible Touch Targets) -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 text-xs" role="group" aria-label="เลือกตอนวิดีโอ">
+                <button type="button" onclick="selectA11yClip('full', this)"
+                        class="a11y-clip-btn min-h-[48px] px-2.5 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold transition text-center">
+                  ฉบับเต็ม (2:19)
+                </button>
+                <button type="button" onclick="selectA11yClip('clip1', this)"
+                        class="a11y-clip-btn min-h-[48px] px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium transition text-center">
+                  ตอน 1: เปิดงาน
+                </button>
+                <button type="button" onclick="selectA11yClip('clip2', this)"
+                        class="a11y-clip-btn min-h-[48px] px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium transition text-center">
+                  ตอน 2: 5 รวมเป็น 1
+                </button>
+                <button type="button" onclick="selectA11yClip('clip3', this)"
+                        class="a11y-clip-btn min-h-[48px] px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium transition text-center">
+                  ตอน 3: วุฒิสภา
+                </button>
+              </div>
+
+              <!-- Expandable Accessible Transcript & Audio Description for Deaf / Blind / Screen Readers -->
+              <details class="mt-3 rounded-xl bg-slate-950/70 border border-slate-800 p-3 text-xs text-slate-200">
+                <summary class="cursor-pointer font-semibold text-amber-300 flex items-center justify-between min-h-[36px]">
+                  <span>📜 เปิดอ่านบทถอดความและคำบรรยายภาพทั้งหมด (Full Transcript & Audio Description)</span>
+                  <span class="text-[11px] text-slate-400">คลิกขยาย</span>
+                </summary>
+                <div class="mt-3 pt-3 border-t border-slate-800 space-y-2.5 leading-relaxed font-light text-slate-200">
+                  <p><strong class="text-amber-300">[ตอนที่ 1: Art for All 2569]</strong> ภาพเยาวชนผู้พิการทางสายตา การได้ยิน และร่างกายร่วมวาดภาพกลางแสงแดดอบอุ่น — <em>เสียงบรรยาย:</em> “ขอเชิญร่วมสัมผัสพลังแห่งการสร้างสรรค์ ในโครงการ Art for All สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ จัดขึ้นวันที่ 26–28 พฤศจิกายน 2569 ณ อาคารรัฐสภา เพื่อพัฒนาศักยภาพคนพิการและต่อยอดสู่การสร้างอาชีพและรายได้จริง”</p>
+                  <p><strong class="text-purple-300">[ตอนที่ 2: มหัศจรรย์ 5 รวมเป็น 1 อัจฉริยะ]</strong> ภาพสัญลักษณ์มือแห่งแสง 5 สีหลอมรวมเป็นดาวดวงเดียว — <em>เสียงบรรยาย:</em> “ความพิการไม่ใช่ข้อจำกัด แต่โอกาสต่างหากคือสิ่งที่กำหนดขีดความสามารถ โมเดล 5 รวมเป็น 1 อัจฉริยะ โดย ศ.ดร.ชาญณรงค์ พรรุ่งโรจน์ สมาชิกวุฒิสภา ผสานจุดแข็ง ตาบอดเป็นปาก หูหนวกเป็นตา กายภาพเป็นปัญญา สติปัญญาเป็นแรงกาย และผู้ประสานงาน”</p>
+                  <p><strong class="text-emerald-300">[ตอนที่ 3: พลังนิติบัญญัติเพื่อความยั่งยืน]</strong> ภาพอาคารรัฐสภาและตราชั่งแห่งความยุติธรรมผสานพู่กันศิลปะ — <em>เสียงบรรยาย:</em> “วุฒิสภาขับเคลื่อน 3 เสาหลัก กลั่นกรองกฎหมาย คุ้มครองสิทธิ สวัสดิการ มาตรฐานอารยสถาปัตย์ (Universal Design) ส่งเสริมศิลปะพัฒนาศักยภาพ และบูรณาการเครือข่ายสร้างอาชีพ ไม่ทิ้งใครไว้ข้างหลัง”</p>
+                </div>
+              </details>
+
+              <!-- Direct Download Links -->
+              <div class="flex flex-wrap gap-2 mt-3 text-[11px]">
+                <a id="a11yDownloadMp4" href="./videos/art_for_all_senate_full_presentation.mp4" download
+                   class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-amber-300 font-medium transition">
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i> ดาวน์โหลดวิดีโอ (.MP4)
                 </a>
-                <a href="./videos/clip_1_art_for_all_expo.mp4" target="_blank"
-                   class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 text-slate-200 transition">
-                  <span>ตอนที่ 1: Art for All 2569 สร้างศิลป์ สร้างอาชีพ</span>
-                  <span class="text-[11px] text-slate-400">MP4</span>
-                </a>
-                <a href="./videos/clip_2_five_in_one_genius.mp4" target="_blank"
-                   class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 text-slate-200 transition">
-                  <span>ตอนที่ 2: โมเดล 5 รวมเป็น 1 อัจฉริยะ</span>
-                  <span class="text-[11px] text-slate-400">MP4</span>
-                </a>
-                <a href="./videos/clip_3_senate_legislative_power.mp4" target="_blank"
-                   class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 text-slate-200 transition">
-                  <span>ตอนที่ 3: พลังนิติบัญญัติเพื่อความยั่งยืน</span>
-                  <span class="text-[11px] text-slate-400">MP4</span>
+                <a id="a11yDownloadVtt" href="./videos/art_for_all_senate_full_presentation.vtt" download
+                   class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-cyan-300 font-medium transition">
+                  <i data-lucide="subtitles" class="w-3.5 h-3.5"></i> ดาวน์โหลดไฟล์ซับไตเติล (.VTT)
                 </a>
               </div>
             </div>
@@ -1274,6 +1373,225 @@
         flashCopiedButton(btnEl, 'คัดลอกครบ 4 ฉากแล้ว ✓');
       });
     }
+
+    // ================= ACCESSIBLE VIDEO CINEMA CONTROLLER =================
+    const A11Y_CLIPS = {
+      full: {
+        mp4: './videos/art_for_all_senate_full_presentation.mp4',
+        vtt: './videos/art_for_all_senate_full_presentation.vtt',
+        poster: './assets/ai_scenes/clip1_s1.jpg'
+      },
+      clip1: {
+        mp4: './videos/clip_1_art_for_all_expo.mp4',
+        vtt: './videos/clip_1_art_for_all_expo.vtt',
+        poster: './assets/ai_scenes/clip1_s1.jpg'
+      },
+      clip2: {
+        mp4: './videos/clip_2_five_in_one_genius.mp4',
+        vtt: './videos/clip_2_five_in_one_genius.vtt',
+        poster: './assets/ai_scenes/clip2_s2.jpg'
+      },
+      clip3: {
+        mp4: './videos/clip_3_senate_legislative_power.mp4',
+        vtt: './videos/clip_3_senate_legislative_power.vtt',
+        poster: './assets/ai_scenes/clip3_s1.jpg'
+      }
+    };
+
+    function selectA11yClip(key, btnEl) {
+      const data = A11Y_CLIPS[key];
+      if (!data) return;
+      const player = document.getElementById('a11yCinemaPlayer');
+      const srcEl = document.getElementById('a11yVideoSource');
+      const trackEl = document.getElementById('a11yVideoTrack');
+      const dlMp4 = document.getElementById('a11yDownloadMp4');
+      const dlVtt = document.getElementById('a11yDownloadVtt');
+
+      if (player && srcEl && trackEl) {
+        player.pause();
+        player.poster = data.poster;
+        srcEl.src = data.mp4;
+        trackEl.src = data.vtt;
+        player.load();
+        if (player.textTracks && player.textTracks[0]) {
+          player.textTracks[0].mode = 'showing';
+        }
+        player.play().catch(() => {});
+      }
+      if (dlMp4) dlMp4.href = data.mp4;
+      if (dlVtt) dlVtt.href = data.vtt;
+
+      document.querySelectorAll('.a11y-clip-btn').forEach(btn => {
+        btn.className = 'a11y-clip-btn min-h-[48px] px-2.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium transition text-center';
+      });
+      if (btnEl) {
+        btnEl.className = 'a11y-clip-btn min-h-[48px] px-2.5 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold transition text-center';
+      }
+    }
+
+    // ================= UNIVERSAL ACCESSIBILITY TOOLBAR ENGINE =================
+    let a11yFontLevel = 0;
+    let a11ySpeaking = false;
+
+    function toggleA11yDrawer() {
+      const panel = document.getElementById('a11yPanel');
+      const btn = document.getElementById('a11yToggleBtn');
+      if (!panel || !btn) return;
+      const isHidden = panel.classList.contains('hidden');
+      panel.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    }
+
+    function cycleA11yFontSize() {
+      const root = document.documentElement;
+      const badge = document.getElementById('a11yFontStatus');
+      root.classList.remove('a11y-text-lg', 'a11y-text-xl');
+      a11yFontLevel = (a11yFontLevel + 1) % 3;
+      if (a11yFontLevel === 1) {
+        root.classList.add('a11y-text-lg');
+        if (badge) badge.textContent = '115%';
+      } else if (a11yFontLevel === 2) {
+        root.classList.add('a11y-text-xl');
+        if (badge) badge.textContent = '130%';
+      } else {
+        if (badge) badge.textContent = '100%';
+      }
+    }
+
+    function toggleA11yContrast() {
+      const root = document.documentElement;
+      const active = root.classList.toggle('a11y-high-contrast');
+      const status = document.getElementById('a11yContrastStatus');
+      if (status) status.textContent = active ? 'เปิด' : 'ปิด';
+    }
+
+    function toggleA11yReduceMotion() {
+      const root = document.documentElement;
+      const active = root.classList.toggle('a11y-reduce-motion');
+      const status = document.getElementById('a11yMotionStatus');
+      if (status) status.textContent = active ? 'เปิด' : 'ปิด';
+    }
+
+    function toggleEasyReadModal() {
+      const modal = document.getElementById('easyReadModal');
+      if (!modal) return;
+      const isHidden = modal.classList.contains('hidden');
+      modal.classList.toggle('hidden');
+      document.body.style.overflow = isHidden ? 'hidden' : '';
+      lucide.createIcons();
+    }
+
+    function toggleThaiReadAloud() {
+      const status = document.getElementById('a11yVoiceStatus');
+      if (!('speechSynthesis' in window)) {
+        alert('เบราว์เซอร์นี้ไม่รองรับการอ่านออกเสียงอัตโนมัติ กรุณากดเล่นวิดีโอบรรยายเสียงแทนค่ะ');
+        return;
+      }
+      if (a11ySpeaking) {
+        window.speechSynthesis.cancel();
+        a11ySpeaking = false;
+        if (status) status.textContent = 'ฟังเสียง';
+        return;
+      }
+      const speechText = [
+        'โครงการ Art for All สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ และบทบาทวุฒิสภาไทย จัดขึ้นระหว่างวันที่ 26 ถึง 28 พฤศจิกายน 2569 ณ อาคารรัฐสภา สัปปายะสภาสถาน',
+        'ปรัชญาหลัก คือ ความพิการไม่ใช่ข้อจำกัด แต่โอกาสต่างหากคือสิ่งที่กำหนดขีดความสามารถ ผ่านโมเดล 5 รวมเป็น 1 อัจฉริยะ ริเริ่มโดย ศาสตราจารย์ ดร.ชาญณรงค์ พรรุ่งโรจน์ สมาชิกวุฒิสภา',
+        'บทบาทของวุฒิสภา 3 เสาหลัก ได้แก่ เสาหลักที่ 1 กลั่นกรองกฎหมาย คุ้มครองสิทธิ สวัสดิการ และมาตรฐานอารยสถาปัตย์ ยูนิเวอร์แซล ดีไซน์',
+        'เสาหลักที่ 2 ส่งเสริมการใช้ศิลปะฟื้นฟูและพัฒนาศักยภาพคนพิการ และเสาหลักที่ 3 บูรณาการความร่วมมือทุกภาคส่วน สร้างงานและรายได้ที่มั่นคงให้คนพิการ 10,000 คน ไม่ทิ้งใครไว้ข้างหลัง'
+      ].join(' ... ');
+
+      const utter = new SpeechSynthesisUtterance(speechText);
+      utter.lang = 'th-TH';
+      utter.rate = 0.95;
+      utter.onend = () => {
+        a11ySpeaking = false;
+        if (status) status.textContent = 'ฟังเสียง';
+      };
+      utter.onerror = () => {
+        a11ySpeaking = false;
+        if (status) status.textContent = 'ฟังเสียง';
+      };
+      a11ySpeaking = true;
+      if (status) status.textContent = 'หยุดอ่าน';
+      window.speechSynthesis.speak(utter);
+    }
+
+    // Keyboard shortcut Alt + S for Screen Reader / Blind users to trigger instant Read Aloud
+    document.addEventListener('keydown', (e) => {
+      if (e.altKey && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        toggleThaiReadAloud();
+      }
+    });
   </script>
+
+  <!-- ================= FLOATING UNIVERSAL ACCESSIBILITY TOOLBAR (WCAG 2.1 AA) ================= -->
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2" role="region" aria-label="แถบเครื่องมือช่วยการเข้าถึงสำหรับคนพิการ">
+    <div id="a11yPanel" class="hidden w-80 p-4 rounded-2xl bg-slate-950/95 border-2 border-amber-400/70 shadow-2xl backdrop-blur-xl text-xs space-y-2.5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <span class="font-bold text-amber-300 flex items-center gap-1.5 text-sm">
+          <i data-lucide="accessibility" class="w-4 h-4"></i> ผู้ช่วยคนพิการ (Universal Design)
+        </span>
+        <button type="button" onclick="toggleA11yDrawer()" class="p-1.5 rounded-lg text-slate-400 hover:text-white" aria-label="ปิดหน้าต่างผู้ช่วย">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <button type="button" onclick="toggleThaiReadAloud()"
+              class="w-full min-h-[48px] px-3 py-2 rounded-xl bg-purple-600/25 hover:bg-purple-600/40 border border-purple-400/50 text-white font-semibold flex items-center justify-between transition">
+        <span class="flex items-center gap-2"><i data-lucide="volume-2" class="w-4 h-4 text-purple-300"></i> ให้ AI อ่านออกเสียงหน้าเว็บ (Alt+S)</span>
+        <span id="a11yVoiceStatus" class="px-2 py-0.5 rounded bg-purple-500 text-white text-[10px]">ฟังเสียง</span>
+      </button>
+
+      <button type="button" onclick="cycleA11yFontSize()"
+              class="w-full min-h-[48px] px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-100 font-medium flex items-center justify-between transition">
+        <span class="flex items-center gap-2"><i data-lucide="type" class="w-4 h-4 text-amber-300"></i> ขยายขนาดตัวอักษร (สายตาเลือนราง)</span>
+        <span id="a11yFontStatus" class="px-2 py-0.5 rounded bg-slate-800 text-amber-300 text-[10px]">100%</span>
+      </button>
+
+      <button type="button" onclick="toggleA11yContrast()"
+              class="w-full min-h-[48px] px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-100 font-medium flex items-center justify-between transition">
+        <span class="flex items-center gap-2"><i data-lucide="contrast" class="w-4 h-4 text-yellow-300"></i> โหมดคอนทราสต์สูง (เหลือง-ดำ)</span>
+        <span id="a11yContrastStatus" class="px-2 py-0.5 rounded bg-slate-800 text-yellow-300 text-[10px]">ปิด</span>
+      </button>
+
+      <button type="button" onclick="toggleA11yReduceMotion()"
+              class="w-full min-h-[48px] px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-100 font-medium flex items-center justify-between transition">
+        <span class="flex items-center gap-2"><i data-lucide="pause-circle" class="w-4 h-4 text-cyan-300"></i> หยุดแอนิเมชัน (Reduce Motion)</span>
+        <span id="a11yMotionStatus" class="px-2 py-0.5 rounded bg-slate-800 text-cyan-300 text-[10px]">ปิด</span>
+      </button>
+
+      <button type="button" onclick="toggleEasyReadModal()"
+              class="w-full min-h-[48px] px-3 py-2 rounded-xl bg-emerald-600/25 hover:bg-emerald-600/40 border border-emerald-400/50 text-emerald-200 font-semibold flex items-center justify-between transition">
+        <span class="flex items-center gap-2"><i data-lucide="book-open-check" class="w-4 h-4 text-emerald-300"></i> โหมดสรุปอ่านง่าย (Easy-to-Read)</span>
+        <span class="text-[10px] text-emerald-300">เปิดอ่าน</span>
+      </button>
+    </div>
+
+    <button id="a11yToggleBtn" type="button" onclick="toggleA11yDrawer()" aria-expanded="false" aria-controls="a11yPanel"
+            class="min-h-[52px] px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-bold text-sm shadow-2xl shadow-amber-500/40 flex items-center gap-2 hover:scale-105 transition">
+      <i data-lucide="accessibility" class="w-5 h-5"></i>
+      <span>ช่วยคนพิการ (A11Y)</span>
+    </button>
+  </div>
+
+  <!-- ================= EASY-TO-READ MODAL (FOR COGNITIVE & LEARNING ACCESSIBILITY) ================= -->
+  <div id="easyReadModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="easyReadTitle">
+    <div class="max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-slate-950 border-2 border-emerald-400 p-6 sm:p-8 text-slate-100 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <h3 id="easyReadTitle" class="text-2xl font-bold text-emerald-300">📖 สรุปเข้าใจง่าย (Easy-to-Read)</h3>
+        <button type="button" onclick="toggleEasyReadModal()" class="min-w-[48px] min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center" aria-label="ปิดหน้าต่างสรุปอ่านง่าย">✕</button>
+      </div>
+      <div class="space-y-4 text-lg leading-relaxed">
+        <p class="p-4 rounded-2xl bg-slate-900 border border-slate-700">🎨 <strong>งานนี้คืออะไร?</strong><br>งานศิลปะเพื่อคนพิการ ชื่อโครงการ “Art for All สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ”</p>
+        <p class="p-4 rounded-2xl bg-slate-900 border border-slate-700">📅 <strong>จัดวันไหน ที่ไหน?</strong><br>วันที่ 26 – 28 พฤศจิกายน 2569 ที่ อาคารรัฐสภา กรุงเทพมหานคร</p>
+        <p class="p-4 rounded-2xl bg-slate-900 border border-slate-700">🤝 <strong>หลักการ 5 รวมเป็น 1 อัจฉริยะ</strong><br>• คนตาบอด ช่วยพูดสื่อสาร<br>• คนหูหนวก ช่วยดูรายละเอียดภาพ<br>• คนพิการร่างกาย ช่วยคิดวางแผน<br>• คนพิการสติปัญญา ช่วยลงมือทำอย่างเต็มที่<br>• คนทั่วไป ช่วยประสานงาน<br>ทุกคนเก่งเท่ากันเมื่อทำงานร่วมกัน!</p>
+        <p class="p-4 rounded-2xl bg-slate-900 border border-slate-700">⚖️ <strong>วุฒิสภาช่วยอะไรบ้าง?</strong><br>1. ออกกฎหมายคุ้มครองสิทธิคนพิการ<br>2. ทำทางลาดและพื้นที่ที่ทุกคนใช้งานได้สะดวก<br>3. ช่วยขายผลงานศิลปะ ให้มีอาชีพและรายได้จริง</p>
+      </div>
+      <button type="button" onclick="toggleThaiReadAloud()" class="w-full min-h-[52px] rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-base">
+        🔊 กดเพื่อฟังเสียงอ่านสรุปนี้
+      </button>
+    </div>
+  </div>
 </body>
 </html>
