@@ -62,6 +62,12 @@
 
 ---
 
+## 🎥 วิดีโอประชาสัมพันธ์โครงการ (YouTube)
+* 📺 **วิดีโอโครงการหลัก:** [Art for All ศิลปะสร้างโอกาส](https://www.youtube.com/watch?v=iUGIHKny6N4) — สื่อสารบทบาทของวุฒิสภา และพลังแห่งการก้าวข้ามขีดจำกัด
+* 🎬 **AI Scene Breakdown:** [Art project video scene breakdown](https://www.youtube.com/watch?v=vhK7PmLZ5jA) — การแจกแจงฉากและจำลองภาพเคลื่อนไหวด้วย Video AI
+
+---
+
 ## 📁 ผังโครงสร้างโปรเจกต์
 ```
 art-for-all-senate/
