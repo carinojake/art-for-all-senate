@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art for All: สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ & พลังนิติบัญญัติวุฒิสภา</title>
+  <meta name="description" content="โครงการ Art for All: สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ และบทบาทของวุฒิสภาในการส่งเสริมสิทธิและโอกาสคนพิการ โดย ศ.ดร.ชาญณรงค์ พรรุ่งโรจน์">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Art for All: สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ">
+  <meta property="og:description" content="พลังนิติบัญญัติ สู่การพัฒนาที่ยั่งยืน และบทบาทของวุฒิสภาในการส่งเสริมคุณภาพชีวิตคนพิการ">
+  <meta property="og:image" content="assets/images/art-for-all-opportunity.png">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN with Typography & Form Plugins -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            senate: {
+              50: '#faf5ff',
+              100: '#f3e8ff',
+              200: '#e9d5ff',
+              500: '#a855f7',
+              600: '#9333ea',
+              700: '#7e22ce',
+              800: '#6b21a8',
+              900: '#581c87',
+            },
+            art: {
+              orange: '#f97316',
+              yellow: '#eab308',
+              pink: '#ec4899',
+              blue: '#06b6d4',
+              purple: '#8b5cf6',
+            }
+          },
+          fontFamily: {
+            sans: ['Kanit', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-[#0b0f19] text-slate-100 antialiased selection:bg-purple-500 selection:text-white">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#0b0f19]/80 backdrop-blur-xl border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo & Brand -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 p-[2px] transition group-hover:scale-105">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <i data-lucide="palette" class="w-5 h-5 text-purple-400"></i>
+          </div>
+        </div>
+        <div>
+          <span class="text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
+            Art for All <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 font-medium">วุฒิสภา</span>
+          </span>
+          <p class="text-xs text-slate-400 hidden sm:block">สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-purple-400 transition">ภาพรวมโครงการ</a>
+        <a href="#philosophy" class="hover:text-purple-400 transition">ปรัชญา 5 รวมเป็น 1</a>
+        <a href="#senate-role" class="hover:text-purple-400 transition">บทบาทวุฒิสภา</a>
+        <a href="#initiatives" class="hover:text-purple-400 transition">โครงการสำคัญ</a>
+        <a href="#media-studio" class="hover:text-purple-400 transition">สื่อ & AI Innovation</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <a href="https://www.youtube.com/@Channarong32" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-red-600/10 text-red-400 border border-red-500/20 hover:bg-red-600 hover:text-white transition shadow-sm">
+          <i data-lucide="youtube" class="w-4 h-4"></i>
+          <span>Channarong Channel</span>
+        </a>
+        <a href="#gallery" 
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:opacity-90 transition shadow-lg shadow-purple-900/30">
+          <i data-lucide="image" class="w-4 h-4"></i>
+          <span>ดู Infographic</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none" aria-label="Toggle Navigation">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0e1424] border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
+      <a href="#about" class="block py-2 text-slate-300 hover:text-purple-400 font-medium">ภาพรวมโครงการ</a>
+      <a href="#philosophy" class="block py-2 text-slate-300 hover:text-purple-400 font-medium">ปรัชญา 5 รวมเป็น 1</a>
+      <a href="#senate-role" class="block py-2 text-slate-300 hover:text-purple-400 font-medium">บทบาทวุฒิสภา</a>
+      <a href="#initiatives" class="block py-2 text-slate-300 hover:text-purple-400 font-medium">โครงการสำคัญ</a>
+      <a href="#media-studio" class="block py-2 text-slate-300 hover:text-purple-400 font-medium">สื่อ & AI Innovation</a>
+      <div class="pt-3 flex flex-col gap-2">
+        <a href="https://www.youtube.com/@Channarong32" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-red-600/20 text-red-300 text-sm font-medium">
+          <i data-lucide="youtube" class="w-4 h-4"></i> Channarong Channel (YouTube)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- ================= HERO SECTION ================= -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20">
+      <!-- Glow ambient background -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-pink-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-10 left-10 w-[350px] h-[350px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-5xl mx-auto text-center relative z-10">
+        
+        <!-- Top Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-purple-500/30 text-purple-300 text-xs sm:text-sm font-medium mb-8 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>กำหนดการจัดงาน: 26 - 28 พฤศจิกายน 2569</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+          Art for All <br class="hidden sm:block"/>
+          <span class="gradient-text-purple-amber">สร้างศิลป์ สร้างสรรค์ สร้างอาชีพ</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="max-w-3xl mx-auto text-lg sm:text-xl text-slate-300 font-light mb-10 leading-relaxed">
+          ผสานพลังศิลปะแห่งมวลมนุษย์สู่ <strong class="text-white font-medium">"พลังนิติบัญญัติเพื่อความยั่งยืน"</strong> โดยวุฒิสภา 
+          ก้าวข้ามทุกขีดจำกัด พัฒนาศักยภาพคนพิการ และต่อยอดผลงานสู่การสร้างอาชีพที่มั่นคงและมีศักดิ์ศรี
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#gallery" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-semibold text-base shadow-lg shadow-purple-600/30 hover:opacity-95 transition flex items-center gap-2">
+            <i data-lucide="eye" class="w-5 h-5"></i>
+            <span>ชมนิทรรศการ Infographic</span>
+          </a>
+          <a href="#philosophy" class="px-7 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700 text-slate-200 font-medium text-base transition flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-5 h-5 text-amber-400"></i>
+            <span>โมเดล 5 คน รวมเป็น 1</span>
+          </a>
+        </div>
+
+        <!-- Three Core Pillars Pills -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mt-16 text-left">
+          <div class="glass-card p-5 rounded-2xl border-l-4 border-l-purple-500">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="p-2 rounded-lg bg-purple-500/20 text-purple-300"><i data-lucide="paint-brush" class="w-5 h-5"></i></span>
+              <h3 class="font-semibold text-white">สร้างศิลป์</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-400">เปิดพื้นที่ปลอดภัยและโอกาสที่เท่าเทียม ให้ทุกคนได้แสดงออกและปลดปล่อยพลังสร้างสรรค์</p>
+          </div>
+
+          <div class="glass-card p-5 rounded-2xl border-l-4 border-l-amber-500">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="p-2 rounded-lg bg-amber-500/20 text-amber-300"><i data-lucide="lightbulb" class="w-5 h-5"></i></span>
+              <h3 class="font-semibold text-white">สร้างสรรค์</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-400">พัฒนาทักษะ ค้นพบศักยภาพที่ซ่อนอยู่ภายใน และเรียนรู้การอยู่ร่วมกันอย่างเอื้ออาทร</p>
+          </div>
+
+          <div class="glass-card p-5 rounded-2xl border-l-4 border-l-emerald-500">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="p-2 rounded-lg bg-emerald-500/20 text-emerald-300"><i data-lucide="trending-up" class="w-5 h-5"></i></span>
+              <h3 class="font-semibold text-white">สร้างอาชีพ</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-400">เชื่อมโยงผลงานศิลปะสู่เศรษฐกิจจริง สร้างรายได้ที่มั่นคงและพึ่งพาตนเองได้อย่างยั่งยืน</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= ABOUT & FOUNDER SECTION ================= -->
+    <section id="about" class="py-20 bg-slate-900/40 relative border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Profile Card -->
+          <div class="lg:col-span-5">
+            <div class="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden group">
+              <div class="absolute -top-12 -right-12 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl"></div>
+              
+              <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold mb-6">
+                  <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                  <span>ผู้ริเริ่มและผู้วางรากฐาน</span>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">ศ.ดร.ชาญณรงค์ พรรุ่งโรจน์</h2>
+                <p class="text-purple-400 font-medium text-sm sm:text-base mb-6">
+                  สมาชิกวุฒิสภา & ผู้ก่อตั้งมูลนิธิศิลปะเพื่อมวลมนุษย์ (Art for All)
+                </p>
+
+                <div class="space-y-4 text-sm text-slate-300 font-light leading-relaxed mb-6">
+                  <p>
+                    ริเริ่มก่อตั้งมูลนิธิ Art for All ตั้งแต่ปี พ.ศ. 2540 โดยมุ่งหวังให้ศิลปะเป็นสะพานเชื่อมความรัก ความเข้าใจ และปลดล็อกศักยภาพของคนพิการทุกประเภทสู่สังคม
+                  </p>
+                  <blockquote class="p-4 rounded-xl bg-purple-950/40 border-l-4 border-purple-500 text-slate-200 italic font-normal">
+                    "ความพิการไม่ได้จำกัดศักยภาพ แต่โอกาสต่างหากที่กำหนดขีดความสามารถ"
+                  </blockquote>
+                </div>
+
+                <!-- National Awards Badges -->
+                <div class="border-t border-slate-800 pt-5 space-y-2.5">
+                  <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">รางวัลการันตีระดับชาติ:</span>
+                  <div class="flex items-start gap-3">
+                    <span class="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 mt-0.5"><i data-lucide="trophy" class="w-4 h-4"></i></span>
+                    <div>
+                      <h4 class="text-xs font-semibold text-white">รางวัล "ค่าของแผ่นดิน" (ปี 2564)</h4>
+                      <p class="text-[11px] text-slate-400">จากสำนักนายกรัฐมนตรี มอบแด่บุคคลและองค์กรผู้ทำคุณประโยชน์สูงสุดแก่สังคม</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <span class="p-1.5 rounded-lg bg-purple-500/20 text-purple-400 mt-0.5"><i data-lucide="medal" class="w-4 h-4"></i></span>
+                    <div>
+                      <h4 class="text-xs font-semibold text-white">รางวัลโครงการดีเด่นของชาติ (ปี 2545)</h4>
+                      <p class="text-[11px] text-slate-400">สาขาพัฒนาสังคม คัดสรรโดยคณะกรรมการเอกลักษณ์ของชาติ</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Description & Mission Overview -->
+          <div class="lg:col-span-7 space-y-8">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Foundation Milestone</span>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1 mb-4">
+                กว่า 29 ปีแห่งการก้าวข้ามขีดจำกัด สู่ทศวรรษที่ 4 แห่งการสร้างอาชีพ
+              </h2>
+              <p class="text-slate-300 text-base leading-relaxed font-light">
+                มูลนิธิศิลปะเพื่อมวลมนุษย์ (Art for All) ได้พิสูจน์แล้วว่าศิลปะคือภาษาสากลที่ไม่จำกัดสายตา หู หรือร่างกาย 
+                และเมื่อนำจุดแข็งของคนแต่ละกลุ่มมาทำงานร่วมกัน จะเกิดพลังสร้างสรรค์อันไร้ขีดจำกัด
+              </p>
+            </div>
+
+            <!-- Milestone Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="glass-card p-5 rounded-2xl">
+                <div class="text-3xl font-extrabold text-purple-400 mb-1">พ.ศ. 2540</div>
+                <h3 class="font-semibold text-white text-sm mb-1">จุดเริ่มต้นแห่งโอกาส</h3>
+                <p class="text-xs text-slate-400">ก่อตั้งค่ายศิลปะ Art for All นำเด็กพิการและเยาวชนทั่วไปมาใช้ชีวิตและเรียนรู้ร่วมกัน</p>
+              </div>
+
+              <div class="glass-card p-5 rounded-2xl">
+                <div class="text-3xl font-extrabold text-pink-400 mb-1">10,000 คน</div>
+                <h3 class="font-semibold text-white text-sm mb-1">เป้าหมายทศวรรษที่ 4</h3>
+                <p class="text-xs text-slate-400">สร้างอาชีพที่มั่นคง มีรายได้เลี้ยงดูตนเองและครอบครัว ภายในระยะเวลา 10 ปี</p>
+              </div>
+
+              <div class="glass-card p-5 rounded-2xl">
+                <div class="text-3xl font-extrabold text-amber-400 mb-1">3 สถาบันหลัก</div>
+                <h3 class="font-semibold text-white text-sm mb-1">บูรณาการไร้รอยต่อ</h3>
+                <p class="text-xs text-slate-400">เชื่อมโยงวุฒิสภา ภาควิชาการ และประชาสังคม เพื่อขับเคลื่อนนโยบายที่เป็นรูปธรรม</p>
+              </div>
+
+              <div class="glass-card p-5 rounded-2xl">
+                <div class="text-3xl font-extrabold text-emerald-400 mb-1">AI x Art</div>
+                <h3 class="font-semibold text-white text-sm mb-1">นวัตกรรมสื่อยุคใหม่</h3>
+                <p class="text-xs text-slate-400">ประยุกต์ใช้นวัตกรรม Generative AI ในการสื่อสารและขยายผลงานสู่ระดับสากล</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= PHILOSOPHY 5 AS 1 GENIUS ================= -->
+    <section id="philosophy" class="py-24 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-pink-400">Core Creative Philosophy</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+            โมเดล <span class="gradient-text-purple-amber">"5 คน รวมเป็น 1 อัจฉริยะ"</span>
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg font-light leading-relaxed">
+            ไม่มีใครสมบูรณ์แบบในทุกด้าน แต่เมื่อนำจุดแข็งของคนพิการแต่ละประเภทและคนทั่วไปมาร้อยเรียงเข้าด้วยกัน 
+            เราจะสามารถสร้างผลงานศิลปะและนวัตกรรมระดับอัจฉริยะได้เสมอ
+          </p>
+        </div>
+
+        <!-- 5 Roles Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          
+          <!-- 1. คนตาบอด -->
+          <div class="glass-card p-6 rounded-2xl text-center flex flex-col items-center justify-between border-t-4 border-t-amber-400">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="mic" class="w-8 h-8 text-amber-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">คนตาบอด</h3>
+            <span class="px-2.5 py-0.5 rounded-full bg-amber-400/10 text-amber-300 text-xs font-semibold mb-3">ทำหน้าที่: ปาก & หู</span>
+            <p class="text-xs text-slate-300 font-light leading-relaxed">
+              สัมผัสเสียงอันลึกซึ้ง มีทักษะการรับฟัง การถ่ายทอดคำพูด และการสื่อสารอารมณ์ได้อย่างมีพลัง
+            </p>
+          </div>
+
+          <!-- 2. คนหูหนวก -->
+          <div class="glass-card p-6 rounded-2xl text-center flex flex-col items-center justify-between border-t-4 border-t-cyan-400">
+            <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="eye" class="w-8 h-8 text-cyan-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">คนหูหนวก</h3>
+            <span class="px-2.5 py-0.5 rounded-full bg-cyan-400/10 text-cyan-300 text-xs font-semibold mb-3">ทำหน้าที่: ดวงตา</span>
+            <p class="text-xs text-slate-300 font-light leading-relaxed">
+              ความละเอียดอ่อนในการสังเกตภาพ สีสัน เส้นสาย และมุมมองเชิงทัศนศิลป์ที่คมชัด
+            </p>
+          </div>
+
+          <!-- 3. คนพิการทางร่างกาย -->
+          <div class="glass-card p-6 rounded-2xl text-center flex flex-col items-center justify-between border-t-4 border-t-purple-400">
+            <div class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="brain" class="w-8 h-8 text-purple-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">พิการทางร่างกาย</h3>
+            <span class="px-2.5 py-0.5 rounded-full bg-purple-400/10 text-purple-300 text-xs font-semibold mb-3">ทำหน้าที่: ปัญญา</span>
+            <p class="text-xs text-slate-300 font-light leading-relaxed">
+              พลังการคิดวิเคราะห์ วางโครงสร้างกลยุทธ์ การออกแบบความคิดสร้างสรรค์ และการวางแผน
+            </p>
+          </div>
+
+          <!-- 4. คนพิการทางสติปัญญา -->
+          <div class="glass-card p-6 rounded-2xl text-center flex flex-col items-center justify-between border-t-4 border-t-pink-400">
+            <div class="w-16 h-16 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="dumbbell" class="w-8 h-8 text-pink-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">พิการทางสติปัญญา</h3>
+            <span class="px-2.5 py-0.5 rounded-full bg-pink-400/10 text-pink-300 text-xs font-semibold mb-3">ทำหน้าที่: แรงกาย</span>
+            <p class="text-xs text-slate-300 font-light leading-relaxed">
+              พลังความมุ่งมั่น ทุ่มเทแรงกายอย่างจริงใจ ลงมือทำอย่างจดจ่อและไม่ย่อท้อ
+            </p>
+          </div>
+
+          <!-- 5. คนไม่พิการ -->
+          <div class="glass-card p-6 rounded-2xl text-center flex flex-col items-center justify-between border-t-4 border-t-emerald-400">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="users" class="w-8 h-8 text-emerald-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">คนทั่วไป</h3>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-400/10 text-emerald-300 text-xs font-semibold mb-3">ทำหน้าที่: ประสานงาน</span>
+            <p class="text-xs text-slate-300 font-light leading-relaxed">
+              ผู้เชื่อมโยง ช่วยอำนวยความสะดวก จัดการ และเติมเต็มความเอื้ออาทรให้ทีมขับเคลื่อนร่วมกัน
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Formula Equal Result Box -->
+        <div class="mt-8 glass-card p-6 rounded-2xl border border-purple-500/30 max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-amber-400 to-pink-500 flex items-center justify-center text-slate-950 font-black text-xl">
+              =
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-white">ผลลัพธ์: 1 อัจฉริยะ (The Collective Genius)</h4>
+              <p class="text-xs sm:text-sm text-slate-400 font-light">เมื่อผสานจุดแข็ง ความต่างจะกลายเป็นพลังสูงสุดที่สร้างสรรค์งานศิลป์และสังคมได้จริง</p>
+            </div>
+          </div>
+          <a href="#initiatives" class="px-4 py-2 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-500/30 text-xs font-semibold hover:bg-purple-600 hover:text-white transition whitespace-nowrap">
+            ดูตัวอย่างโครงการ
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SENATE ROLE (พลังนิติบัญญัติ) ================= -->
+    <section id="senate-role" class="py-24 bg-slate-900/50 border-y border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-600/20 text-purple-300 border border-purple-500/30 text-xs font-semibold mb-3">
+            <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
+            <span>The Senate's Legislative Power</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+            พลังนิติบัญญัติ สู่การพัฒนาที่ยั่งยืน
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg font-light">
+            บทบาทสำคัญของวุฒิสภาในการเป็นกลไกขับเคลื่อนสิทธิ เสรีภาพ และสร้างโอกาสอย่างเสมอภาคให้แก่คนพิการทั่วประเทศ
+          </p>
+        </div>
+
+        <!-- Official Senate Infographic Banner (Click to Zoom) -->
+        <div class="max-w-4xl mx-auto mb-16 glass-card rounded-3xl overflow-hidden border border-purple-500/30 group cursor-pointer" 
+             onclick="openLightbox('assets/images/senate-legislative-power.png', 'พลังนิติบัญญัติ สู่การพัฒนาที่ยั่งยืน: วุฒิสภาขับเคลื่อนนโยบายส่งเสริมสิทธิ สร้างโอกาส สร้างอาชีพ')">
+          <div class="relative overflow-hidden aspect-[16/9] bg-slate-950 flex items-center justify-center">
+            <img src="assets/images/senate-legislative-power.png" alt="พลังนิติบัญญัติ สู่การพัฒนาที่ยั่งยืน" class="w-full h-full object-cover transition duration-500 group-hover:scale-102">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition"></div>
+            <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+              <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-purple-600/90 text-white text-xs font-semibold shadow-lg backdrop-blur-md group-hover:bg-purple-500 transition">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                <span>คลิกขยายดูภาพเต็ม</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Senate Pillars -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Pillar 1 -->
+          <div class="glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                <i data-lucide="scale" class="w-7 h-7"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3">1. ด้านนโยบายและกฎหมาย</h3>
+              <p class="text-slate-300 text-sm font-light leading-relaxed mb-4">
+                กลั่นกรองและผลักดันกฎหมาย สวัสดิการ ตลอดจนนโยบายสาธารณะที่คุ้มครองสิทธิ เสรีภาพ และความเสมอภาคของคนพิการในทุกมิติ
+              </p>
+              <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 flex-shrink-0"></i>
+                  <span>ติดตามการบังคับใช้กฎหมายส่งเสริมคนพิการ</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 flex-shrink-0"></i>
+                  <span>ผลักดันโครงสร้างพื้นฐานที่เข้าถึงได้ (Universal Design)</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4 border-t border-slate-800 text-[11px] text-purple-300 font-medium">
+              #สิทธิตามกฎหมาย #ความเสมอภาคเท่าเทียม
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400 mb-6">
+                <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3">2. ด้านการพัฒนาศักยภาพ</h3>
+              <p class="text-slate-300 text-sm font-light leading-relaxed mb-4">
+                สนับสนุนพื้นที่ทางสังคม นำกระบวนการทางศิลปะมาเป็นเครื่องมือเยียวยา ฟื้นฟูจิตใจ และเสริมสร้างศักยภาพให้ผู้พิการก้าวข้ามข้อจำกัด
+              </p>
+              <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-pink-400 flex-shrink-0"></i>
+                  <span>จัดสรรพื้นที่เรียนรู้และค่ายศิลปะสร้างสรรค์</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-pink-400 flex-shrink-0"></i>
+                  <span>ฟื้นฟูจิตใจและสร้างความตระหนักรู้ในคุณค่าตนเอง</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4 border-t border-slate-800 text-[11px] text-pink-300 font-medium">
+              #ศิลปะบำบัด #ปลุกพลังศักยภาพ
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6">
+                <i data-lucide="briefcase" class="w-7 h-7"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3">3. ด้านการสร้างอาชีพ</h3>
+              <p class="text-slate-300 text-sm font-light leading-relaxed mb-4">
+                บูรณาการระหว่างภาครัฐ ภาคเอกชน และเครือข่ายศิลปิน เพื่อยกระดับผลงานสร้างสรรค์สู่ตลาดมืออาชีพ และสร้างงานสร้างรายได้ที่มั่นคง
+              </p>
+              <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
+                  <span>จับคู่ธุรกิจและตลาดรับซื้อผลงานศิลปะ</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
+                  <span>สร้างโมเดลเศรษฐกิจสร้างสรรค์สำหรับคนพิการ</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4 border-t border-slate-800 text-[11px] text-amber-300 font-medium">
+              #สร้างอาชีพที่ยั่งยืน #พึ่งพาตนเองได้
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= KEY INITIATIVES ================= -->
+    <section id="initiatives" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Milestones & Projects</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1 mb-4">
+            โครงการและกิจกรรมสำคัญ
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg font-light">
+            การเดินทางของโครงการที่สร้างผลกระทบเชิงบวกและเป็นรูปธรรมต่อสังคมไทย
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Item 1: ค่ายศิลปะ -->
+          <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between">
+            <div class="p-6 sm:p-8">
+              <div class="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2">โครงการหลัก</div>
+              <h3 class="text-xl font-bold text-white mb-3">ค่ายศิลปะ Art for All (Art for All Camp)</h3>
+              <p class="text-sm text-slate-300 font-light leading-relaxed mb-4">
+                กิจกรรมค่าย 5 วัน ที่นำเยาวชนพิการทุกประเภท (กาย สติปัญญา สายตา การได้ยิน) และเยาวชนทั่วไป มาใช้ชีวิต เรียนรู้ และสร้างสรรค์ผลงานศิลปะร่วมกัน เกิดเป็นมิตรภาพและความเข้าใจไร้พรมแดน
+              </p>
+            </div>
+            <div class="px-6 py-4 bg-slate-950/40 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+              <span>ระยะเวลา: 5 วัน 4 คืน</span>
+              <span class="text-purple-300 font-medium">จัดต่อเนื่องทุกปี</span>
+            </div>
+          </div>
+
+          <!-- Item 2: ประตูสู่จินตนาการ -->
+          <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between">
+            <div class="p-6 sm:p-8">
+              <div class="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">โครงการสนองแนวพระราชดำริ</div>
+              <h3 class="text-xl font-bold text-white mb-3">Art for All: ประตูสู่จินตนาการ</h3>
+              <p class="text-sm text-slate-300 font-light leading-relaxed mb-4">
+                โครงการสนองแนวพระราชดำริ สมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดา ฯ สยามบรมราชกุมารี ที่นำกระบวนการทางศิลปะเข้าไปฟื้นฟูจิตใจและพัฒนาพฤตินิสัยของผู้ต้องขังโทษสูงในเรือนจำ
+              </p>
+            </div>
+            <div class="px-6 py-4 bg-slate-950/40 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+              <span>ฟื้นฟูพฤตินิสัยผู้ต้องขัง</span>
+              <span class="text-amber-300 font-medium">คืนคนดีสู่สังคม</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Art for All Village -->
+          <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between">
+            <div class="p-6 sm:p-8">
+              <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">ต้นแบบชุมชนยั่งยืน</div>
+              <h3 class="text-xl font-bold text-white mb-3">Art for All Village</h3>
+              <p class="text-sm text-slate-300 font-light leading-relaxed mb-4">
+                การพัฒนาหมู่บ้านศิลปะเพื่อมวลมนุษย์สำหรับเด็กพิการ เพื่อใช้เป็นพื้นที่เรียนรู้ ฝึกฝนทักษะอาชีพ และพัฒนาทักษะชีวิตอย่างยั่งยืน อยู่ร่วมกับธรรมชาติและชุมชนอย่างกลมกลืน
+              </p>
+            </div>
+            <div class="px-6 py-4 bg-slate-950/40 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+              <span>พื้นที่การเรียนรู้ตลอดชีวิต</span>
+              <span class="text-emerald-300 font-medium">ทักษะชีวิตยั่งยืน</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= MEDIA STUDIO & AI INNOVATION ================= -->
+    <section id="media-studio" class="py-24 bg-slate-900/60 border-t border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 text-xs font-semibold mb-3">
+            <i data-lucide="video" class="w-3.5 h-3.5"></i>
+            <span>Creative Media & AI Video Script</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+            นวัตกรรมสื่อประชาสัมพันธ์ & วิดีโอ AI
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg font-light">
+            การประยุกต์ใช้เทคโนโลยีปัญญาประดิษฐ์ (AI) ในการรังสรรค์สื่อประชาสัมพันธ์ สื่อสารหัวใจของโครงการสู่สายตาคนรุ่นใหม่
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- AI Video Script Timeline (7 cols) -->
+          <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+              <div>
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                  <i data-lucide="film" class="w-5 h-5 text-purple-400"></i>
+                  <span>สคริปต์วิดีโอ AI (ความยาว 60 วินาที)</span>
+                </h3>
+                <p class="text-xs text-slate-400 mt-1">โครงสร้างบทบรรยายและภาพจำลองสำหรับสร้างด้วยโมเดล Video AI</p>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-semibold">60 Secs</span>
+            </div>
+
+            <!-- Timeline scenes -->
+            <div class="space-y-6">
+              
+              <!-- Scene 1 -->
+              <div class="flex gap-4 items-start">
+                <div class="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
+                  0-15s
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 1: ประกายแห่งจินตนาการ (Spark of Imagination)</h4>
+                  <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
+                    <strong class="text-purple-300">ภาพ:</strong> ผืนผ้าใบสีขาว จานสี และมือของเยาวชนที่จับพู่กันร่วมกัน แสงนุ่มนวลสะท้อนดวงตาแห่งความมุ่งมั่น
+                  </p>
+                  <p class="text-xs text-slate-400 italic">
+                    <strong class="text-slate-200">เสียงบรรยาย:</strong> "ความพิการอาจสร้างข้อจำกัดทางกายภาพ... แต่ไม่เคยหยุดยั้งหัวใจแห่งการสร้างสรรค์"
+                  </p>
+                </div>
+              </div>
+
+              <!-- Scene 2 -->
+              <div class="flex gap-4 items-start">
+                <div class="w-12 h-12 rounded-xl bg-pink-600/20 border border-pink-500/30 text-pink-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
+                  15-35s
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 2: พลังแห่ง 5 รวมเป็น 1 (5 in 1 Genius in Action)</h4>
+                  <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
+                    <strong class="text-pink-300">ภาพ:</strong> การแบ่งบทบาทตามโมเดล คนตาบอดส่งเสียง คนหูหนวกบรรจงแต้มสี เพื่อนช่วยพยุง และร่วมกันเนรมิตภาพวาดขนาดใหญ่
+                  </p>
+                  <p class="text-xs text-slate-400 italic">
+                    <strong class="text-slate-200">เสียงบรรยาย:</strong> "เมื่อดวงตา ปาก หู แรงกาย และปัญญา หลอมรวมเป็นหนึ่ง... เราทุกคนคือ 'อัจฉริยะ' ที่สร้างสิ่งมหัศจรรย์ได้ร่วมกัน"
+                  </p>
+                </div>
+              </div>
+
+              <!-- Scene 3 -->
+              <div class="flex gap-4 items-start">
+                <div class="w-12 h-12 rounded-xl bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
+                  35-50s
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 3: จากศิลปะสู่อาชีพจริง (From Canvas to Sustainable Career)</h4>
+                  <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
+                    <strong class="text-amber-300">ภาพ:</strong> ผลงานศิลปะถูกแปลงเป็นสินค้า กระเป๋า เสื้อผ้า ของตกแต่งบ้าน และการจัดแสดงในหอศิลป์ระดับชาติ
+                  </p>
+                  <p class="text-xs text-slate-400 italic">
+                    <strong class="text-slate-200">เสียงบรรยาย:</strong> "ไม่ใช่แค่ความเพลิดเพลิน แต่คืออาชีพ คือรายได้ และคือศักดิ์ศรีความเป็นมนุษย์ที่พึ่งพาตนเองได้"
+                  </p>
+                </div>
+              </div>
+
+              <!-- Scene 4 -->
+              <div class="flex gap-4 items-start">
+                <div class="w-12 h-12 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
+                  50-60s
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 4: พลังนิติบัญญัติเพื่อความยั่งยืน (Senate's Legacy)</h4>
+                  <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
+                    <strong class="text-emerald-300">ภาพ:</strong> อาคารรัฐสภาเชื่อมโยงภาพรอยยิ้มของเด็กๆ และโลโก้ Art for All ปิดท้ายด้วยกำหนดการจัดงาน
+                  </p>
+                  <p class="text-xs text-slate-400 italic">
+                    <strong class="text-slate-200">เสียงบรรยาย:</strong> "วุฒิสภาขับเคลื่อนนโยบาย ส่งเสริมสิทธิ สร้างโอกาส สร้างอาชีพให้คนพิการผ่านศิลปะ... พบกัน 26-28 พฤศจิกายน 2569"
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Infographic Preview & Prompt Concept (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <!-- Graphic Design Concept Card -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="p-2 rounded-xl bg-purple-500/20 text-purple-300"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+                <h3 class="font-bold text-white text-lg">คอนเซปต์ภาพกราฟิกหลัก</h3>
+              </div>
+              <p class="text-xs text-slate-300 font-light leading-relaxed mb-4">
+                ผสานสัญลักษณ์ของ <strong class="text-purple-300 font-medium">"สัปปายะสภาสถาน (อาคารรัฐสภา)"</strong> เข้ากับ 
+                <strong class="text-amber-300 font-medium">"จานสีและพู่กันหลากสีสัน"</strong> แสดงถึงการนำอำนาจนิติบัญญัติมาปกป้อง ดูแล และสร้างความเบ่งบานทางโอกาสแก่คนพิการ
+              </p>
+              
+              <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-xs space-y-2">
+                <div class="flex justify-between text-slate-400">
+                  <span>โทนสีหลัก:</span>
+                  <span class="text-slate-200 font-medium">ม่วงวุฒิสภา, ส้มศิลป์, ชมพูสดใส, ทอง</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                  <span>Slogan สื่อสาร:</span>
+                  <span class="text-amber-300 font-semibold">ก้าวข้ามขีดจำกัด ศิลปะสร้างโอกาสให้ทุกคน</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                  <span>ช่องทางการเผยแพร่:</span>
+                  <span class="text-slate-200 font-medium">ออนไลน์, โซเชียลมีเดีย, สื่อนิทรรศการรัฐสภา</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- YouTube Official Channel Banner -->
+            <div class="glass-card p-6 rounded-3xl border border-red-500/30 bg-gradient-to-br from-red-950/20 to-slate-900/60">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-red-600 flex items-center justify-center text-white shadow-lg shadow-red-600/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Channarong Channel</h4>
+                  <p class="text-xs text-slate-400">@Channarong32 • ช่องทางการอย่างเป็นทางการ</p>
+                </div>
+              </div>
+              <p class="text-xs text-slate-300 font-light mb-4">
+                รับชมสารคดี บันทึกกิจกรรมค่าย Art for All และรายการสะท้อนมุมมองศิลปะกับสังคมโดย ศ.ดร.ชาญณรงค์ พรรุ่งโรจน์
+              </p>
+              <a href="https://www.youtube.com/@Channarong32" target="_blank" rel="noopener noreferrer" 
+                 class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs transition shadow-md">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+                <span>ติดตามช่อง YouTube Channarong Channel</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= INFOGRAPHIC GALLERY (LIGHTBOX) ================= -->
+    <section id="gallery" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400">High-Resolution Visual Assets</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1 mb-4">
+            นิทรรศการ Infographic ความละเอียดสูง
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg font-light">
+            คลิกที่ภาพเพื่อขยายดูรายละเอียด กราฟิก และเนื้อหาข้อมูลโครงการต้นฉบับแบบเต็มจอ (Full Screen)
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Image 1 -->
+          <div class="glass-card rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between" onclick="openLightbox('assets/images/art-for-all-opportunity.png', 'Art for All: ศิลปะสร้างโอกาส (26-28 พฤศจิกายน 2569)')">
+            <div class="relative overflow-hidden aspect-[3/4] bg-slate-950 flex items-center justify-center">
+              <img src="assets/images/art-for-all-opportunity.png" alt="Art for All: ศิลปะสร้างโอกาส" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <div>
+                  <span class="px-2 py-0.5 rounded-md bg-purple-600 text-white text-[10px] font-semibold mb-1 inline-block">Infographic ชุดที่ 1</span>
+                  <h3 class="text-sm font-bold text-white">Art for All: สร้างศิลป์</h3>
+                  <p class="text-[11px] text-slate-300 font-light">กำหนดการจัดงาน 26-28 พ.ย. 2569</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-purple-600 transition">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-3 bg-slate-950/60 flex items-center justify-between text-[11px] text-slate-400">
+              <span class="flex items-center gap-1"><i data-lucide="zoom-in" class="w-3.5 h-3.5 text-purple-400"></i> คลิกขยายภาพ</span>
+              <span>3.0 MB</span>
+            </div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="glass-card rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between" onclick="openLightbox('assets/images/channarong-art-for-all.png', 'สรุปข้อมูล มูลนิธิศิลปะเพื่อมวลมนุษย์ (Art for All) และบทบาทของ ศ.ดร.ชาญณรงค์ พรรุ่งโรจน์')">
+            <div class="relative overflow-hidden aspect-[3/4] bg-slate-950 flex items-center justify-center">
+              <img src="assets/images/channarong-art-for-all.png" alt="บทบาท ศ.ดร.ชาญณรงค์ พรรุ่งโรจน์ และมูลนิธิ Art for All" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <div>
+                  <span class="px-2 py-0.5 rounded-md bg-pink-600 text-white text-[10px] font-semibold mb-1 inline-block">Infographic ชุดที่ 2</span>
+                  <h3 class="text-sm font-bold text-white">บทบาท ศ.ดร.ชาญณรงค์</h3>
+                  <p class="text-[11px] text-slate-300 font-light">โมเดล 5 รวมเป็น 1 อัจฉริยะ</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-pink-600 transition">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-3 bg-slate-950/60 flex items-center justify-between text-[11px] text-slate-400">
+              <span class="flex items-center gap-1"><i data-lucide="zoom-in" class="w-3.5 h-3.5 text-pink-400"></i> คลิกขยายภาพ</span>
+              <span>2.6 MB</span>
+            </div>
+          </div>
+
+          <!-- Image 3 -->
+          <div class="glass-card rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between" onclick="openLightbox('assets/images/senate-legislative-power.png', 'พลังนิติบัญญัติ สู่การพัฒนาที่ยั่งยืน: วุฒิสภาขับเคลื่อนนโยบาย ส่งเสริมสิทธิ สร้างโอกาส สร้างอาชีพ')">
+            <div class="relative overflow-hidden aspect-[3/4] bg-slate-950 flex items-center justify-center">
+              <img src="assets/images/senate-legislative-power.png" alt="พลังนิติบัญญัติ สู่การพัฒนาที่ยั่งยืน" class="w-full h-full object-contain p-2 transition duration-500 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <div>
+                  <span class="px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 text-[10px] font-semibold mb-1 inline-block">Infographic ชุดที่ 3</span>
+                  <h3 class="text-sm font-bold text-white">พลังนิติบัญญัติ 3 เสาหลัก</h3>
+                  <p class="text-[11px] text-slate-300 font-light">นโยบาย • ศักยภาพ • สร้างอาชีพ</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-amber-500 transition">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-3 bg-slate-950/60 flex items-center justify-between text-[11px] text-slate-400">
+              <span class="flex items-center gap-1"><i data-lucide="zoom-in" class="w-3.5 h-3.5 text-amber-400"></i> คลิกขยายภาพ</span>
+              <span>188 KB</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-[#070b13] border-t border-slate-800/80 py-12 text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        
+        <div class="md:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-amber-400 flex items-center justify-center text-slate-950 font-bold">
+              <i data-lucide="palette" class="w-4 h-4 text-slate-950"></i>
+            </div>
+            <span class="text-base font-bold text-white tracking-tight">Art for All & วุฒิสภา</span>
+          </div>
+          <p class="text-xs text-slate-400 font-light leading-relaxed max-w-md">
+            ขับเคลื่อนการพัฒนาคุณภาพชีวิตคนพิการผ่านศิลปะ และบทบาทของวุฒิสภาในการส่งเสริมสิทธิและโอกาส 
+            โดย ศาสตราจารย์ ดร.ชาญณรงค์ พรรุ่งโรจน์ (สมาชิกวุฒิสภา)
+          </p>
+          <p class="text-xs text-slate-500">
+            งานจัดแสดง: 26 - 28 พฤศจิกายน 2569
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider mb-4">หัวข้อโครงการ</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#about" class="hover:text-purple-400 transition">ภาพรวม & ผู้ริเริ่ม</a></li>
+            <li><a href="#philosophy" class="hover:text-purple-400 transition">โมเดล 5 คน รวมเป็น 1</a></li>
+            <li><a href="#senate-role" class="hover:text-purple-400 transition">บทบาทวุฒิสภา 3 ด้าน</a></li>
+            <li><a href="#initiatives" class="hover:text-purple-400 transition">โครงการสำคัญ & หมู่บ้านศิลปะ</a></li>
+            <li><a href="#media-studio" class="hover:text-purple-400 transition">สคริปต์วิดีโอ AI</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider mb-4">ช่องทางติดตาม</h4>
+          <ul class="space-y-2 text-xs">
+            <li>
+              <a href="https://www.youtube.com/@Channarong32" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition flex items-center gap-2">
+                <i data-lucide="youtube" class="w-4 h-4 text-red-500"></i>
+                <span>Channarong Channel</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/carinojake/art-for-all-senate" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition flex items-center gap-2">
+                <i data-lucide="github" class="w-4 h-4 text-purple-400"></i>
+                <span>GitHub Repository</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2569 มูลนิธิศิลปะเพื่อมวลมนุษย์ (Art for All) & วุฒิสภา. สงวนลิขสิทธิ์.</p>
+        <p class="flex items-center gap-1.5">
+          <span>ออกแบบและจัดทำโดยระบบอัตโนมัติ</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+          <span>Google Antigravity</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= LIGHTBOX MODAL ================= -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-6" onclick="closeLightbox(event)">
+    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-3 z-50">
+      <a id="lightboxDownloadBtn" href="#" download class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 transition" title="ดาวน์โหลดภาพต้นฉบับ" onclick="event.stopPropagation()">
+        <i data-lucide="download" class="w-5 h-5"></i>
+      </a>
+      <button class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-red-600 text-slate-200 hover:text-white transition" onclick="closeLightbox(event)" title="ปิดหน้าต่าง">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Modal image container -->
+    <div class="relative max-w-5xl max-h-[85vh] w-full h-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+      <img id="lightboxImg" src="" alt="Infographic ขยายใหญ่" class="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl border border-white/10">
+      <p id="lightboxCaption" class="mt-4 text-center text-sm font-medium text-slate-300"></p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Lightbox Modal Functions
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    const modalCaption = document.getElementById('lightboxCaption');
+    const downloadBtn = document.getElementById('lightboxDownloadBtn');
+
+    function openLightbox(src, caption) {
+      modalImg.src = src;
+      modalCaption.textContent = caption;
+      downloadBtn.href = src;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // refresh icons inside modal if needed
+      lucide.createIcons();
+    }
+
+    function closeLightbox(e) {
+      if (e) e.preventDefault();
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        modalImg.src = '';
+      }, 250);
+    }
+
+    // Keyboard navigation (ESC to close)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
