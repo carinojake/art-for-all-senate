@@ -11,6 +11,7 @@ Thumbs.db
 *.tmp
 *.log
 /tmp/
+videos/v1_backup/
 
 # Python cache
 __pycache__/
