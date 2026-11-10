@@ -151,6 +151,10 @@
             <i data-lucide="eye" class="w-5 h-5"></i>
             <span>ชมนิทรรศการ Infographic</span>
           </a>
+          <a href="#media-studio" class="px-7 py-3.5 rounded-xl bg-pink-600/20 hover:bg-pink-600/30 border border-pink-500/40 text-pink-300 font-medium text-base transition flex items-center gap-2">
+            <i data-lucide="play-circle" class="w-5 h-5 text-pink-400"></i>
+            <span>ชมวิดีโอ AI Breakdown</span>
+          </a>
           <a href="#philosophy" class="px-7 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700 text-slate-200 font-medium text-base transition flex items-center gap-2">
             <i data-lucide="sparkles" class="w-5 h-5 text-amber-400"></i>
             <span>โมเดล 5 คน รวมเป็น 1</span>
@@ -683,23 +687,38 @@
               <div>
                 <h3 class="text-xl font-bold text-white flex items-center gap-2">
                   <i data-lucide="film" class="w-5 h-5 text-purple-400"></i>
-                  <span>สคริปต์วิดีโอ AI (ความยาว 60 วินาที)</span>
+                  <span>สคริปต์วิดีโอ AI & วิดีโอตัวอย่าง (ความยาว 60 วินาที)</span>
                 </h3>
-                <p class="text-xs text-slate-400 mt-1">โครงสร้างบทบรรยายและภาพจำลองสำหรับสร้างด้วยโมเดล Video AI</p>
+                <p class="text-xs text-slate-400 mt-1">รับชมวิดีโอพร้อมโครงสร้างบทบรรยายและภาพจำลองที่สร้างด้วย Video AI</p>
               </div>
               <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-semibold">60 Secs</span>
             </div>
 
-            <!-- Timeline scenes -->
+            <!-- Integrated Embedded Player for Scene Breakdown -->
+            <div class="mb-8 rounded-2xl overflow-hidden border border-pink-500/30 bg-slate-950 aspect-video shadow-2xl relative group">
+              <iframe id="breakdownPlayer" class="w-full h-full" 
+                      src="https://www.youtube.com/embed/vhK7PmLZ5jA?enablejsapi=1" 
+                      title="Art project video scene breakdown" 
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      allowfullscreen>
+              </iframe>
+            </div>
+
+            <!-- Timeline scenes with interactive jump links -->
             <div class="space-y-6">
               
               <!-- Scene 1 -->
-              <div class="flex gap-4 items-start">
-                <div class="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
-                  0-15s
-                </div>
-                <div>
-                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 1: ประกายแห่งจินตนาการ (Spark of Imagination)</h4>
+              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-purple-500/40 transition">
+                <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=0s" target="_blank" class="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-purple-600 hover:text-white transition" title="คลิกดูช่วงเวลานี้บน YouTube">
+                  <span>ฉาก 1</span>
+                  <span class="text-[9px] text-purple-300">0–15s</span>
+                </a>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-sm font-semibold text-white">ฉากที่ 1: ประกายแห่งจินตนาการ (Spark of Imagination)</h4>
+                    <span class="text-[10px] text-purple-300 font-mono">00:00 - 00:15</span>
+                  </div>
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-purple-300">ภาพ:</strong> ผืนผ้าใบสีขาว จานสี และมือของเยาวชนที่จับพู่กันร่วมกัน แสงนุ่มนวลสะท้อนดวงตาแห่งความมุ่งมั่น
                   </p>
@@ -710,12 +729,16 @@
               </div>
 
               <!-- Scene 2 -->
-              <div class="flex gap-4 items-start">
-                <div class="w-12 h-12 rounded-xl bg-pink-600/20 border border-pink-500/30 text-pink-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
-                  15-35s
-                </div>
-                <div>
-                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 2: พลังแห่ง 5 รวมเป็น 1 (5 in 1 Genius in Action)</h4>
+              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-pink-500/40 transition">
+                <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=15s" target="_blank" class="w-12 h-12 rounded-xl bg-pink-600/20 border border-pink-500/30 text-pink-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-pink-600 hover:text-white transition" title="คลิกดูช่วงเวลานี้บน YouTube">
+                  <span>ฉาก 2</span>
+                  <span class="text-[9px] text-pink-300">15–35s</span>
+                </a>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-sm font-semibold text-white">ฉากที่ 2: พลังแห่ง 5 รวมเป็น 1 (5 in 1 Genius in Action)</h4>
+                    <span class="text-[10px] text-pink-300 font-mono">00:15 - 00:35</span>
+                  </div>
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-pink-300">ภาพ:</strong> การแบ่งบทบาทตามโมเดล คนตาบอดส่งเสียง คนหูหนวกบรรจงแต้มสี เพื่อนช่วยพยุง และร่วมกันเนรมิตภาพวาดขนาดใหญ่
                   </p>
@@ -726,12 +749,16 @@
               </div>
 
               <!-- Scene 3 -->
-              <div class="flex gap-4 items-start">
-                <div class="w-12 h-12 rounded-xl bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
-                  35-50s
-                </div>
-                <div>
-                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 3: จากศิลปะสู่อาชีพจริง (From Canvas to Sustainable Career)</h4>
+              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-amber-500/40 transition">
+                <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=35s" target="_blank" class="w-12 h-12 rounded-xl bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-amber-600 hover:text-slate-950 transition" title="คลิกดูช่วงเวลานี้บน YouTube">
+                  <span>ฉาก 3</span>
+                  <span class="text-[9px] text-amber-300">35–50s</span>
+                </a>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-sm font-semibold text-white">ฉากที่ 3: จากศิลปะสู่อาชีพจริง (From Canvas to Sustainable Career)</h4>
+                    <span class="text-[10px] text-amber-300 font-mono">00:35 - 00:50</span>
+                  </div>
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-amber-300">ภาพ:</strong> ผลงานศิลปะถูกแปลงเป็นสินค้า กระเป๋า เสื้อผ้า ของตกแต่งบ้าน และการจัดแสดงในหอศิลป์ระดับชาติ
                   </p>
@@ -742,12 +769,16 @@
               </div>
 
               <!-- Scene 4 -->
-              <div class="flex gap-4 items-start">
-                <div class="w-12 h-12 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 font-bold flex items-center justify-center flex-shrink-0 text-xs">
-                  50-60s
-                </div>
-                <div>
-                  <h4 class="text-sm font-semibold text-white mb-1">ฉากที่ 4: พลังนิติบัญญัติเพื่อความยั่งยืน (Senate's Legacy)</h4>
+              <div class="flex gap-4 items-start p-3 rounded-2xl bg-slate-950/40 border border-slate-800/80 hover:border-emerald-500/40 transition">
+                <a href="https://www.youtube.com/watch?v=vhK7PmLZ5jA&t=50s" target="_blank" class="w-12 h-12 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 font-bold flex flex-col items-center justify-center flex-shrink-0 text-[11px] hover:bg-emerald-600 hover:text-white transition" title="คลิกดูช่วงเวลานี้บน YouTube">
+                  <span>ฉาก 4</span>
+                  <span class="text-[9px] text-emerald-300">50–60s</span>
+                </a>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="text-sm font-semibold text-white">ฉากที่ 4: พลังนิติบัญญัติเพื่อความยั่งยืน (Senate's Legacy)</h4>
+                    <span class="text-[10px] text-emerald-300 font-mono">00:50 - 01:00</span>
+                  </div>
                   <p class="text-xs text-slate-300 leading-relaxed font-light mb-2">
                     <strong class="text-emerald-300">ภาพ:</strong> อาคารรัฐสภาเชื่อมโยงภาพรอยยิ้มของเด็กๆ และโลโก้ Art for All ปิดท้ายด้วยกำหนดการจัดงาน
                   </p>
